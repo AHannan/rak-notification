@@ -8,6 +8,8 @@ import lombok.Data;
 @Builder
 public class NotificationDto {
 
+    private String id;
+
     @Column(nullable = false)
     private String userId;
 

@@ -12,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,19 +25,15 @@ public class NotificationService {
                 .map(mapper::map);
     }
 
-    public Optional<NotificationDto> getById(String id) {
-        return null;
-    }
-
     public List<Notification> getUnreadNotificationsByUserId(String userId) {
         return repository.findByUserIdAndRead(userId, false);
     }
 
-    public Notification createNotification(NotificationCreateDto dto) {
+    public NotificationDto createNotification(NotificationCreateDto dto) {
         Notification notification = new Notification();
         notification.setUserId(dto.getUserId());
         notification.setMessage(dto.getMessage());
-        return repository.save(notification);
+        return mapper.map(repository.save(notification));
     }
 
     public Notification markAsRead(String id) {

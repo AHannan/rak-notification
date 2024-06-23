@@ -11,6 +11,7 @@ public class NotificationDtoMapper {
 
     public NotificationDto map(Notification entity) {
         return NotificationDto.builder()
+                .id(entity.getId())
                 .userId(entity.getUserId())
                 .message(entity.getMessage())
                 .read(entity.isRead())

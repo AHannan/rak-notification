@@ -35,13 +35,6 @@ public class NotificationController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<NotificationDto> getById(@PathVariable String id) {
-        return service.getById(id)
-                .map(entity -> new ResponseEntity<>(entity, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
     @GetMapping("/unread/{userId}")
     public ResponseEntity<List<Notification>> getUnreadNotifications(@PathVariable String userId) {
         List<Notification> notifications = service.getUnreadNotificationsByUserId(userId);
@@ -49,8 +42,8 @@ public class NotificationController {
     }
 
     @PostMapping
-    public ResponseEntity<Notification> createNotification(@RequestBody NotificationCreateDto notification) {
-        Notification createdNotification = service.createNotification(notification);
+    public ResponseEntity<NotificationDto> createNotification(@RequestBody NotificationCreateDto notification) {
+        NotificationDto createdNotification = service.createNotification(notification);
         return ResponseEntity.ok(createdNotification);
     }
 
