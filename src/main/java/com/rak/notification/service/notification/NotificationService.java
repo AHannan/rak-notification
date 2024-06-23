@@ -5,7 +5,7 @@ import com.rak.notification.controller.notification.dto.NotificationDto;
 import com.rak.notification.dao.model.notification.Notification;
 import com.rak.notification.dao.repository.notification.NotificationRepository;
 import com.rak.notification.service.notification.mapper.NotificationDtoMapper;
-import com.rak.notification.service.notification.specification.BudgetSpecification;
+import com.rak.notification.service.notification.specification.NotificationSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,7 +22,7 @@ public class NotificationService {
     private final NotificationDtoMapper mapper;
 
     public Page<NotificationDto> getAll(String userId, Pageable pageable) {
-        return repository.findAll(BudgetSpecification.buildSpecification(userId), pageable)
+        return repository.findAll(NotificationSpecification.buildSpecification(userId), pageable)
                 .map(mapper::map);
     }
 

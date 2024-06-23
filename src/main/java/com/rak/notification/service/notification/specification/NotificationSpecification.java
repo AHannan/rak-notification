@@ -7,7 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BudgetSpecification {
+public class NotificationSpecification {
 
     public static Specification<Notification> filterByUserId(String userId) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("userId"), userId);
