@@ -21,14 +21,16 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/notifications")
+@RequestMapping("/notifications")
 @RequiredArgsConstructor
 public class NotificationController {
 
     private final NotificationService service;
 
     @GetMapping
-    public ResponseEntity<Page<NotificationDto>> getAll(@RequestParam String userId, Pageable pageable) {
+    public ResponseEntity<Page<NotificationDto>> getAll(
+            @RequestParam(required = false) String userId,
+            Pageable pageable) {
         Page<NotificationDto> result = service.getAll(userId, pageable);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
