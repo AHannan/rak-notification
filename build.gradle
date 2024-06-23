@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'war'
-	id 'org.springframework.boot' version '2.7.3'
+	id 'org.springframework.boot' version '3.3.1'
 	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
 }
 
@@ -9,7 +9,7 @@ group = 'com.rak.notification'
 version = '0.0.1'
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = '21'
 }
 
 repositories {
@@ -19,6 +19,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	compileOnly 'org.projectlombok:lombok'
@@ -28,14 +29,8 @@ dependencies {
 
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'com.fasterxml.jackson.core:jackson-databind'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-validation'
 	testImplementation 'org.mockito:mockito-core'
-
 }
 
 tasks.named('test') {
