@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "notification", schema = "notification")
+@Table(name = "notification")
 public class Notification extends AbstractEntity {
 
     @Column(nullable = false)
